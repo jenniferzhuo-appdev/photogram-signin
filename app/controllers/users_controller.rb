@@ -17,6 +17,10 @@ class UsersController < ApplicationController
     render("users/sign_in_form.html.erb")
   end
 
+  def add_cookie
+    redirect_to("/", {:notice => "Signed in successfully."})
+  end
+
 
   def index
     @users = User.all.order({ :username => :asc })

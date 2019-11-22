@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   match("/sign_in", { :controller => "users", :action => "session_form", :via => "get" })
 
+  match("/verify_credentials", { :controller => "users", :action => "add_cookie", :via => "post" })
+
   # User routes
 
   # CREATE
