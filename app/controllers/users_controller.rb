@@ -5,6 +5,19 @@ class UsersController < ApplicationController
 
   end
 
+  def remove_cookie
+    # session[:user_id] = nil
+
+    reset_session
+
+    redirect_to("/", {:notice => "Signed out successfully."})
+  end
+
+  def session_form
+    render("users/sign_in_form.html.erb")
+  end
+
+
   def index
     @users = User.all.order({ :username => :asc })
 
