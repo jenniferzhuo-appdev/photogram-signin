@@ -44,6 +44,15 @@ class LikesController < ApplicationController
     like = Like.find(params.fetch(:the_like_id)).destroy
     like.destroy
 
-    render({ :json => like.as_json })
+    respond_to do |format|
+      format.json do
+        render({ :json => like.as_json })
+      end
+
+      format.html do
+        redirect_to("/photos/#{like.photo_id}")
+      end
+    end
+
   end
 end

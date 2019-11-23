@@ -28,11 +28,21 @@
 
   <dt>Add a fan</dt>
   <dd>
-    <form action="/insert_like_record" method="post">
-      <input type="hidden" value="<%= @photo.id %>" name="input_photo_id">
+    <% like = Like.where({ :fan_id => @current_user.id, :photo_id => @photo.id }).at(0) %> 
+    
+    <% if like.present? %>
 
-      <button>Like</button>
-    </form>
+      <a href="/delete_like/<%= like.id %>">
+        Unlike
+      </a> 
+
+    <% else %>
+      <form action="/insert_like_record" method="post">
+        <input type="hidden" value="<%= @photo.id %>" name="input_photo_id">
+
+        <button>Like</button>
+      </form>
+    <% end %>
   </dd>
 
   <dt>Edit photo</dt>
