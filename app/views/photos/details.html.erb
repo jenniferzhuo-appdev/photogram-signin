@@ -29,10 +29,9 @@
   <dt>Add a fan</dt>
   <dd>
     <form action="/insert_like_record" method="post">
-      <label for="browser_pic_id">Photo ID</label>
-      <input id="browser_pic_id" type="text" value="<%= @photo.id %>" name="input_photo_id">
+      <input type="hidden" value="<%= @photo.id %>" name="input_photo_id">
 
-      <button>Add fan</button>
+      <button>Like</button>
     </form>
   </dd>
 
